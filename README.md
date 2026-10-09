@@ -4,6 +4,14 @@
 
 ![麦门](https://img.shields.io/badge/%E9%BA%A6%E9%97%A8-%E6%B0%B8%E5%AD%98-c0392b) ![MCP](https://img.shields.io/badge/McDonald's%20China-MCP-ffbc0d)
 
+## 效果示例
+
+<p align="center">
+  <img src="assets/poster-demo.png" alt="麦门日报示例海报" width="380">
+</p>
+
+*以上为 2026-10-09 真实数据生成的海报（「薯条金黄」版式）：运势签 + 今日活动情报 + 卡包临期券预警 + 羊毛雷达 + QR 行动区。*
+
 ## 这是什么
 
 每天一张竖版社交海报（9:16），包含：
