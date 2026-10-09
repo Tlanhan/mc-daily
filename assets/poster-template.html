@@ -60,12 +60,22 @@
   footer { position: relative; margin-top: 14px; text-align: center; color: #fff;
     font-size: 11px; opacity: .92; line-height: 1.6; }
   footer .mm { font-size: 16px; font-weight: 900; letter-spacing: 4px; }
+  /* QR 区：两栏，左二维码右引导文案 */
+  .qr-row { display: flex; align-items: center; gap: 14px; margin-top: 14px;
+    background: rgba(255,255,255,.16); border-radius: 14px; padding: 10px 14px; }
+  .qr-row img { width: 84px; height: 84px; border-radius: 10px; background: #fff; padding: 4px; }
+  .qr-row .qr-text { text-align: left; color: #fff; font-size: 12px; line-height: 1.7; }
+  .qr-row .qr-text b { font-size: 14px; display: block; }
   .hero { position: relative; margin-top: 16px; border-radius: 18px; overflow: hidden;
     box-shadow: 0 6px 0 rgba(0,0,0,.08); }
   .hero img { width: 100%; display: block; height: 160px; object-fit: cover; }
   .hero .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 12px;
     background: linear-gradient(transparent, rgba(0,0,0,.65)); color: #fff;
     font-size: 12px; font-weight: 700; }
+  /* 每日轮换配色：按日期数字和 mod 3 选一套，改 .poster 上的 background 即可
+     版式A 朝阳橙黄：linear-gradient(160deg,#ffbc0d,#ff8a00 45%,#e23a2e)
+     版式B 麦夜红棕：linear-gradient(160deg,#5c1a1a,#8e2020 45%,#3d0c0c)
+     版式C 薯条金黄：linear-gradient(160deg,#ffd54d,#ffc72c 45%,#ff8a00) */
 </style>
 </head>
 <body>
@@ -102,6 +112,10 @@
   </div>
 
   <footer>
+    <div class="qr-row">
+      <img src="<!-- DATA:QR_IMG -->" alt="QR">
+      <div class="qr-text"><b><!-- DATA:QR_TITLE --></b><!-- DATA:QR_SUB --></div>
+    </div>
     <div class="mm">麦 门 !</div>
     数据来源：麦当劳中国 MCP · 仅供娱乐与参考 · 以 App 实际为准
   </footer>

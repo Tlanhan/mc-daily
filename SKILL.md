@@ -52,16 +52,26 @@ agent_created: true
 
 ### Step 3: 生成海报
 
-用 `assets/poster-template.html` 作为骨架（已含完整 CSS，勿改版式），按模板内 `<!-- DATA -->` 注释锚点注入数据。产出为单个自包含 HTML 文件（内联全部样式，无外部依赖除活动图片 CDN）。
+用 `assets/poster-template.html` 作为骨架（已含完整 CSS，勿改版式），按模板内 `<!-- DATA -->` 注释锚点注入数据。产出为单个自包含 HTML 文件（内联全部样式）。
 
-- 输出路径：`<工作目录>/麦门日报-YYYY-MM-DD.html`，**同时在同目录创建 `imgs/` 文件夹，将海报用到的活动图片用 curl 下载到本地并在 HTML 中以相对路径引用**（不依赖外链 CDN，防加载失败/防盗链/网络差异）
+**每日版式轮换**（与运势签共用日期种子，保证当天一致性）：日期数字和 mod 3 决定当日版式：
+
+| 结果 | 版式名 | 配色（改 .poster 的 background） |
+|---|---|---|
+| 0 | 朝阳橙黄 | `linear-gradient(160deg,#ffbc0d,#ff8a00 45%,#e23a2e)` |
+| 1 | 麦夜红棕 | `linear-gradient(160deg,#5c1a1a,#8e2020 45%,#3d0c0c)`（footer/qr-text 保持白字） |
+| 2 | 薯条金黄 | `linear-gradient(160deg,#ffd54d,#ffc72c 45%,#ff8a00)`（正文卡片区不变，仅背景变） |
+
+**QR 码区**（footer 上方）：用公开 QR API 生成（如 `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=<URL>`），链接指向麦当劳 App 下载页或当日主推活动页；同样用 curl 下载到 `imgs/qr.png` 本地引用。QR 引导文案写当日最佳行动的短句（如「扫码领同款」「今晚到期，速用」）。
+
+- 输出路径：`<工作目录>/麦门日报-YYYY-MM-DD.html`，**同时在同目录创建 `imgs/` 文件夹，将海报用到的活动图片和 QR 图用 curl 下载到本地并在 HTML 中以相对路径引用**（不依赖外链 CDN，防加载失败/防盗链/网络差异）
 - 版式红线：**不要给 .poster 写死 aspect-ratio 或固定高度**（每天内容长度不同，会裁掉底部区块）；footer 用 `margin-top: 14px` 而非 `margin-top: auto`
 - 每天选 1 个主推活动放大图放 hero 区（宽 100%），其余活动用 72px 缩略图列表
 - 用 present_files 展示给用户
 
-### Step 4: 交付文案
+### Step 4: 交付文案（小红书配文自动生成）
 
-海报完成后，附一段可直接复制的社交文案（含 2-3 个话题标签），模板见 references/copywriting.md。
+海报完成后，必须附一段**可直接复制到小红书**的配文（不是泛泛的社交文案）。按 references/copywriting.md 的「小红书模板」产出：emoji 密、口语化、带话题标签、正文含真实羊毛信息钩子，结尾附 5-8 个话题标签。
 
 ## 数据脱敏规则（强制）
 
